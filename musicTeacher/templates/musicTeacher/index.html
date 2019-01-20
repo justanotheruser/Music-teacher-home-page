@@ -1,0 +1,36 @@
+{% extends "musicTeacher/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/zoom-vanilla.js/dist/zoom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/index.css' %}" />
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="index" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+  <div width="50%" style="overflow: auto">
+    {% if main.photo %}
+    <p style="float: left;">
+      <img src="{{ main.photo.url }}"/>
+    </p>
+    {% endif %}
+    <div class="header">
+      <p><h1>{{ main.surname }} {{ main.name }} {{ main.patronymic }}<h1></p>
+      <p><h2>{{ main.position }}</h2></p>
+    </div>
+    <div class="greeting">
+      {{ main.greeting }}
+    </div>
+  </div>
+
+  {% if achievements.all|length %}
+    <span class="paper-sub-header"><h2>НАШИ ДОСТИЖЕНИЯ</h2></span>
+    {% include 'musicTeacher/includes/photo_grid.html' with photos=achievements only%}
+  {% endif %}
+{% endblock content %}
+

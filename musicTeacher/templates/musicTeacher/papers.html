@@ -1,0 +1,45 @@
+{% extends "musicTeacher/base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/papers.css' %}" />
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="papers" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+<div class="content">
+  <div class="header">
+    <h1>Учебные материалы<h1>
+  </div>
+  <div class="grid-container">
+  {% for paper in papers %}
+    <a href="/papers/{{ paper.id }}" class="paper-link">
+      <div class="paper">
+        <div class="paper-title">{{ paper.title}}</div>
+
+        {% if paper.sub_title %}
+        <div class="paper-sub-title">{{ paper.sub_title|truncatewords:20 }}</div>
+        {% endif %}
+
+        {% if paper.videos.all|length %}
+        <img src="{% static 'musicTeacher/images/content-type/video_off.svg' %}" class="content-type-img"/>
+        {% endif %}
+
+        {% if paper.photos.all|length %}
+        <img src="{% static 'musicTeacher/images/content-type/camera_off.svg' %}" class="content-type-img"/>
+        {% endif %}
+        <!--
+        {% if paper.music.all|length %}
+        <img src="{% static 'musicTeacher/images/content-type/music_small.svg' %}"/>
+        {% endif %}
+        -->
+      </div>
+    </a>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}

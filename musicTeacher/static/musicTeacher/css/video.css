@@ -1,0 +1,16 @@
+.video-title {
+    font-family:Roboto; Arial;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.video-pub-date {
+    font-family: Roboto; Arial;
+    font-size: 1em;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}

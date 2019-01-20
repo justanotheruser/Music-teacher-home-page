@@ -1,0 +1,10 @@
+<div class="grid-container">
+    {% for photo in photos %}
+        <div class="grid-item">
+            <img src="{{ photo.photo_thumbnail.url }}" alt="{{ photo.photo.url }}"
+              title="{{ photo.title }}" data-action="zoom" class="photo-preview" />
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'musicTeacher/zoom.js' %}"></script>

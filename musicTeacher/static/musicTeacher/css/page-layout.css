@@ -1,0 +1,49 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0
+  }
+
+.HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  flex-flow: column;
+  overflow:hidden;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+.HolyGrail-content {
+  flex: 0 0 1009px;
+}
+
+.HolyGrail-nav, .HolyGrail-updates {
+  flex-flow: column;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow:hidden;
+}
+
+.HolyGrail-nav {
+  flex: 0 0 57px;
+  /* put the nav on the left */
+  order: -1;
+}
+
+.HolyGrail-updates {
+    flex: 1;
+    /* height of background image*/
+    min-height: 739px;
+}
+
+.myiframe {
+    flex: 1 1 auto;
+    display: flex;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/page-layout.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/navigation.css' %}" />
+    {% block stylesheets %}{% endblock %}
+
+    <script type="text/javascript" src="{% static 'musicTeacher/jquery.documentReady.js' %}">
+    </script>
+    <script type="text/javascript" src="{% static 'musicTeacher/scripts.js' %}" ></script>
+</head>
+<body class="HolyGrail" scroll="no">
+  <header></header>
+  <div class="HolyGrail-body">
+    <main class="HolyGrail-content scrollable" >
+        <div class="scrollable" style="width:100%">
+            {% block content %}
+            {% endblock content %}
+        </div> 
+    </main>
+    <div id="background" style="position: absolute; left: 57px; z-index: -1;">
+        <img src = "{% static 'musicTeacher/images/background_dark.jpg' %}"/>
+    </div>
+    <nav class="HolyGrail-nav">
+    {% block navigation %}
+        {% include "musicTeacher/navigation.html" with selected=selected only %}
+    {% endblock navigation %}
+    </nav>
+    <aside class="HolyGrail-updates">
+      <iframe src="{% url 'latest_updates' %}" class="myiframe"></iframe>
+    </aside>
+  </div>
+  <footer>…</footer>
+</body>
+</html

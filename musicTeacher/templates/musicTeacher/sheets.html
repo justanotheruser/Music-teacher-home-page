@@ -1,0 +1,29 @@
+{% extends "musicTeacher/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/sheets.css' %}" />
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="sheets" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+    <div id="header">
+      <div class="text">
+        <p><h1><span>Ноты</span><h1></p>
+      </div>
+    </div>
+    {% get_media_prefix as MEDIA_PREFIX %}
+    {% if originals %}
+    <h2>Оригинальные</h2>
+    {% include 'musicTeacher/includes/music_table.html' with musics=originals only%}
+    {% endif %}
+    {% if remakes %}
+    <h2>Обработки</h2>
+    {% include 'musicTeacher/includes/music_table.html' with musics=remakes only%}
+    {% endif %}
+{% endblock content %}

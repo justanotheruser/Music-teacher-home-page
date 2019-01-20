@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/latest-updates.css' %}" />
+    <base target="_parent">
+</head>
+
+<body>
+  <div class="header">
+    <h3>Последние обновления<h3>
+  </div>
+  <div class="updates-content">
+    {% if videoUpdates|length %}
+      <div class="section-header">Видео:</div>
+      {% for video in videoUpdates %}
+        <div class="update-link-block">
+          <a href="/video"> {{ video.name }}</a>
+          <p class="update-pub-date">Добавлено {{ video.pub_date }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% if musicUpdates|length %}
+      <div class="section-header">Ноты:</div>
+      {% for music in musicUpdates %}
+        <div class="update-link-block">
+          <a href="/sheets"> {{ music.name }}</a>
+          <p class="update-pub-date">Добавлено {{ music.pub_date }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% if paperUpdates|length %}
+      <div class="section-header">Документы:</div>
+      {% for paper in paperUpdates %}
+        <div class="update-link-block">
+          <a href="/papers/{{ paper.id }}" class="paper-link"> {{ paper.title }}</a>
+          <p class="update-pub-date">Добавлено {{ paper.pub_date }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</body>
+</html>

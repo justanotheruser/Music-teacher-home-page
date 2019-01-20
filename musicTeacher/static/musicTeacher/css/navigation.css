@@ -1,0 +1,114 @@
+#verticalMenu li a {
+    display: block;
+    width: 62px;
+    height: 78px;
+    text-align: center;
+    padding-top: 50px;
+    outline: none;
+    margin-right: 1px;
+    margin-left: 14px;
+    text-decoration: none;
+    color: #ffffff;
+    white-space: nowrap;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.hashover #verticalMenu li a:hover {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    color: #c2c2c2;
+}
+
+#verticalMenu li a.selected, #verticalMenu li a.selected:hover {
+    background-color: #f5f5f5;
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    color: #62666b;
+    border-left: 5px solid #138CDD;
+}
+
+#verticalMenuContainer {
+    float: left;
+    overflow: visible;
+    width: 55px;
+    margin-left: -55px;
+    margin-top: 20px;
+}
+
+#verticalMenu {
+    position: relative;
+    list-style: none;
+    font-size: 10px;
+    z-index: 50;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.vsplitbar {
+    width: 3px;
+    /*background: #B9B9B9;*/
+    border-right: 1px solid #8f949a;
+}
+
+.vsplitbar:hover, .vsplitbar.active {
+    background: #8f949a;
+}
+
+#mainBtn a {
+    background: url('../images/content-type/home_off.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#mainBtn a.selected, #mainBtn a.selected:hover {
+    background: url('../images/content-type/home_on.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#sheetsBtn a {
+    background: url('../images/content-type/music_off.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#sheetsBtn a.selected, #sheetsBtn a.selected:hover {
+    background: url('../images/content-type/music_on.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#videoBtn a {
+    background: url('../images/content-type/video_off.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#videoBtn a.selected, #videoBtn a.selected:hover {
+    background: url('../images/content-type/video_on.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#pubButton a {
+    background: url('../images/content-type/file_text_off.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#pubButton a.selected, #pubButton a.selected:hover {
+    background: url('../images/content-type/file_text_on.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#photoButton a {
+    background: url('../images/content-type/camera_off.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}
+
+#photoButton a.selected, #photoButton a.selected:hover {
+    background: url('../images/content-type/camera_on.svg'),linear-gradient(transparent, transparent);
+    background-size: 24px 24px;
+}

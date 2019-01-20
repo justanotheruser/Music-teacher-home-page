@@ -1,0 +1,40 @@
+<table class="sheets-table" border="1">
+  <tr>
+    <th class="name">Название</th>
+    <th class="record">Запись</th>
+    <th class="difficulty">Сложность</th> 
+  </tr>
+  {% for music in musics %}
+    <tr>
+      <td class="name">
+        {% if music.sheets %}
+          <a href="{{ music.sheets.url }}">{{ music.name }}</a>
+        {% else %}
+          {{ music.name }}
+        {% endif %}
+      </td>
+      <td class="record">
+        {% if music.audio %}
+          <audio width="300" height="32" controls>
+            <source src="{{ music.audio.url }}" type="audio/mpeg">
+            <a href="{{ music.audio.url }}">{{ music.name }}</a></b>
+          </audio>
+        {% endif %}
+      </td>
+      <td class="difficulty">
+        {% if music.difficulty == 1 %}
+          <img src = "{% static 'musicTeacher/images/difficulty/easy.png' %}"/>
+        {% endif %}
+        {% if music.difficulty == 2 %}
+          <img src = "{% static 'musicTeacher/images/difficulty/intermediate.png' %}"/>
+        {% endif %}
+        {% if music.difficulty == 3 %}
+          <img src = "{% static 'musicTeacher/images/difficulty/advanced.png' %}"/>
+        {% endif %}
+        {% if music.difficulty == 4 %}
+          <img src = "{% static 'musicTeacher/images/difficulty/expert.png' %}"/>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}  
+</table>

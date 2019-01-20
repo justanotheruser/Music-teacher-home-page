@@ -1,0 +1,23 @@
+.sheets-table {
+    width:100%;
+    font-size: 1.2em;
+    font-family: 'Lucida Sans Unicode';
+}
+
+.sheets-table .name {
+    width: 70%;
+    font-weight: bold;
+}
+
+.sheets-table .name a {
+    text-decoration: none;
+    color: white;
+}
+
+.sheets-table .record {
+    width: 20%;
+}
+.sheets-table .difficulty {
+    width: 10%;
+    text-align: center;
+}

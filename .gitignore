@@ -1,0 +1,7 @@
+django
+musicTeacher/axure
+**/__pycache__
+__pycache__
+uploads/
+fonts/
+*.sqlite3*

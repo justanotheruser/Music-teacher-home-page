@@ -1,0 +1,45 @@
+@import url("video.css");
+
+.papers-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    grid-template-columns: 33% 33% auto;
+}
+
+.paper-link, .paper-document-link {
+    display:block;
+    color:inherit;
+    text-decoration: none;
+}
+
+.paper {
+    width: 250px;
+}
+
+.content-type-img {
+  width: 36px;
+  height: 36px;
+}
+.paper-title {
+    font-size: 1.2em;
+}
+
+a[href$=".pdf"]:before {
+        /* PDF file */
+  width:32px;
+  height:32px;
+  background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');
+  display:inline-block;
+  content:' ';
+}
+
+/* Add " (PDF)" text after links that go to PDFs */
+a[href$=".pdf"]:after { content: " (PDF)"; }
+
+/* If file size specified as data attribute, use that too */
+a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
+
+.paper-description {
+    width: 70%;
+}

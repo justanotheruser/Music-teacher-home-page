@@ -1,0 +1,10 @@
+<div class="grid-container">
+    {% for video in videos %}
+        <div class="grid-item">
+            <iframe width="324" height="240" src={{video.url}} frameborder="0" allowfullscreen>
+            </iframe>
+            <p class="video-title">{{video.name}}</p>
+            <p class="video-pub-date">{{video.pub_date_only}}</p>
+        </div>
+    {% endfor %}
+</div>

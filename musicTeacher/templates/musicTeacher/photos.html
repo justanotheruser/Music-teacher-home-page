@@ -1,0 +1,15 @@
+{% extends "musicTeacher/base.html" %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/zoom-vanilla.js/dist/zoom.css" rel="stylesheet">
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="photos" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+{% include 'musicTeacher/includes/photo_grid.html' with photos=photos only%}
+{% endblock content %}

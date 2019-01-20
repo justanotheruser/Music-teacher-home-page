@@ -1,0 +1,36 @@
+body {
+  font-family : Arial, Helvetica, Sans-Serif;
+  background-color: #4c516d;
+  color: #f1f1f1;
+  overflow:hidden;
+}
+
+a {
+  color: inherit;
+}
+
+.updates-content {
+  display: -webkit-flex; 
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-style: bold;
+  font-family: 'PF DinText Pro Bold', 'PF DinText Pro', 'Arial Полужирный', sans-serif;
+  font-size: 1.3em;
+}
+
+.section-header {
+  font-size: 1.2em;
+  padding: 0 0 2px 0;
+}
+
+.update-link-block {
+  padding: 0 0 10px 0;
+}
+
+.update-pub-date {
+  margin: 0;
+  font-style: italic;
+}

@@ -1,0 +1,19 @@
+    <div id="verticalMenuContainer">
+        <ul id="verticalMenu">
+            <li id="mainBtn">
+                <a {% if selected == "index" %}class="selected"{% endif %} href="{% url 'index' %}">ГЛАВНАЯ</a>
+            </li>
+            <li id="sheetsBtn">
+                <a {% if selected == "sheets" %}class="selected"{% endif %} href="{% url 'sheets' %}">НОТЫ</a>
+            </li>
+            <li id="videoBtn">
+                <a {% if selected == "video" %}class="selected"{% endif %} href="{% url 'video' %}">ВИДЕО</a>
+            </li>
+            <li id="pubButton">
+                <a {% if selected == "papers" %}class="selected"{% endif %} href="{% url 'papers' %}">СТАТЬИ</a>
+            </li> 
+            <li id="photoButton">
+                <a {% if selected == "photos" %}class="selected"{% endif %} href="{% url 'photos' %}">ФОТО</a>
+            </li>     
+        </ul>
+    </div>

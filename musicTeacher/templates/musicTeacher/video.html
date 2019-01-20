@@ -1,0 +1,15 @@
+{% extends "musicTeacher/base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/video.css' %}" />
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="video" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+{% include 'musicTeacher/includes/video_grid.html' with videos=videos only%}
+{% endblock content %}

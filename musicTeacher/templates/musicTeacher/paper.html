@@ -1,0 +1,40 @@
+{% extends "musicTeacher/base.html" %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/zoom-vanilla.js/dist/zoom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/papers.css' %}" />
+{% endblock %}
+
+{% block navigation %}
+    {% with selected="papers" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock navigation %}
+
+{% block content %}
+<div class="content">
+  <div class="header">
+    <h1>{{ paper.title }}<h1>
+  </div>
+
+  {% if paper.sub_title %}
+  <div class="paper-sub-title"><h2>{{ paper.sub_title }}</h2></div>
+  {% endif %}
+
+  {% if paper.description %}
+  <div class="paper-description">{{ paper.description }}</div>
+  {% endif %}
+
+  <a href="{{ paper.document.url }}" class="paper-document-link">{{ paper.title }}</a>
+  {% if paper.videos.all|length %}
+  <span class="paper-sub-header"><h2>Видео</h2></span>
+  {% include 'musicTeacher/includes/video_grid.html' with videos=paper.videos.all only%}
+  {% endif %}
+
+  {% if paper.photos.all|length %}
+  <span class="paper-sub-header"><h2>Фото</h2></span>
+  {% include 'musicTeacher/includes/photo_grid.html' with photos=paper.photos.all only%}
+  {% endif %}
+  
+</div>
+{% endblock content %}
