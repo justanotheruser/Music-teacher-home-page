@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django import forms
 
 from .forms import PaperForm
 from .models import Music, Video, Paper, Photo, MainPageInfo
@@ -17,6 +18,16 @@ class VideoAdmin(admin.ModelAdmin):
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     exclude = ('pub_date', 'upd_date')
+
+
+@admin.register(MainPageInfo)
+class MainPageInfoAdmin(admin.ModelAdmin):
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(MainPageInfoAdmin, self).formfield_for_dbfield(
+            db_field, **kwargs)
+        if db_field.name == 'greeting':
+            formfield.widget = forms.Textarea(attrs={'cols': '80', 'rows': '10'})
+        return formfield
 
 
 class PaperVideoMembershipInline(admin.TabularInline):
@@ -48,4 +59,3 @@ class PaperAdmin(admin.ModelAdmin):
     exclude = ('pub_date', 'upd_date', 'videos', 'photos')
     form = PaperForm
 
-admin.site.register(MainPageInfo)
