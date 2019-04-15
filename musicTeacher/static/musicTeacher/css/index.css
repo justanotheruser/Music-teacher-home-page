@@ -1,3 +1,20 @@
+.main-photo {
+	overflow: auto;
+}
+.main-photo p {
+	float: left;
+}
+.main-photo p img {
+	width: 420px;
+}
+
+.header {
+	padding: 0px 0px 0px 435px;
+}
+
 .greeting {
   font-size: 1.2em;
+  padding: 30px 10px 10px 10px;
+  font-family:'Georgia';
+  line-height: 150%;
 }

@@ -13,15 +13,15 @@
 {% endblock navigation %}
 
 {% block content %}
-  <div width="50%" style="overflow: auto">
+  <div class="main-photo">
     {% if main.photo %}
-    <p style="float: left;">
-      <img src="{{ main.photo.url }}" width="320"/>
+    <p>
+      <img src="{{ main.photo.url }}"/>
     </p>
     {% endif %}
     <div class="header">
-      <p><h1>{{ main.surname }} {{ main.name }} {{ main.patronymic }}<h1></p>
-      <p><h2>{{ main.position }}</h2></p>
+      <h1>{{ main.surname }} {{ main.name }} {{ main.patronymic }}</h1>
+      <h2>{{ main.position }}</h2>
     </div>
     <div class="greeting">
       {{ main.greeting }}
