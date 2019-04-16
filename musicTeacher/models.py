@@ -125,3 +125,19 @@ class Paper(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Citation(models.Model):
+    page = models.ForeignKey(MainPageInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    quote = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.author = self.author.strip('.')
+            self.quote = self.quote.strip('.')
+        return super(Citation, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.author + ': "' + self.quote[:10] + '...'
+

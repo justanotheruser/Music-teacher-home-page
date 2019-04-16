@@ -2,8 +2,9 @@ from django.contrib import admin
 from django import forms
 
 from .forms import PaperForm
-from .models import Music, Video, Paper, Photo, MainPageInfo
+from .models import Citation, Music, Video, Paper, Photo, MainPageInfo
 
+admin.site.register(Citation)
 
 @admin.register(Music)
 class MusicAdmin(admin.ModelAdmin):
@@ -58,4 +59,3 @@ class PaperAdmin(admin.ModelAdmin):
     ]
     exclude = ('pub_date', 'upd_date', 'videos', 'photos')
     form = PaperForm
-

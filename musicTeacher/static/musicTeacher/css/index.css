@@ -3,18 +3,22 @@
 }
 .main-photo p {
 	float: left;
+	margin: 0px 16px 0px 0px;
 }
 .main-photo p img {
-	width: 420px;
+	width: 440px;
 }
 
-.header {
-	padding: 0px 0px 0px 435px;
+.insp-quote {
+	font-style: italic;
+	text-align: right;
+	margin: 40px 0px 0px 0px;
+	padding: 0px 10px 0px 0px;
 }
 
 .greeting {
   font-size: 1.2em;
-  padding: 30px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   font-family:'Georgia';
   line-height: 150%;
 }

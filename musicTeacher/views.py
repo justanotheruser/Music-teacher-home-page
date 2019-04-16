@@ -1,3 +1,5 @@
+import random
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
@@ -13,8 +15,13 @@ def index(request):
         mainPageInfo = mainPageInfos[0]
     achievements = Photo.objects.filter(
         is_achievement__exact=True).order_by('-pub_date')
-    return render(request, 'musicTeacher/index.html', {'achievements': achievements,
-                                                       'main': mainPageInfo})
+
+    params = {'achievements': achievements, 'main': mainPageInfo}
+    citations = mainPageInfo.citation_set.all()
+    if len(citations) > 0:
+        params['citation'] = random.choice(citations)
+
+    return render(request, 'musicTeacher/index.html', params)
 
 
 def sheets(request):

@@ -23,7 +23,15 @@
       <h1>{{ main.surname }} {{ main.name }} {{ main.patronymic }}</h1>
       <h2>{{ main.position }}</h2>
     </div>
-    <div class="greeting">
+
+    {% if citation %}
+    <div class="insp-quote">
+        <div>{{ citation.quote }}</div>
+        <div>{{ citation.author }}</div>
+    </div>
+    {% endif %}  
+      
+    <div class="greeting">  
       {{ main.greeting }}
     </div>
   </div>
