@@ -1,8 +1,9 @@
 <div class="grid-container">
     {% for photo in photos %}
         <div class="grid-item">
-            <img src="{{ photo.photo_thumbnail.url }}" alt="{{ photo.photo.url }}"
-              title="{{ photo.title }}" data-action="zoom" class="photo-preview" />
+            <img src="{{ photo.photo_thumbnail.url }}" alt="{{ photo.short_descr }}"
+              title='{{ photo.short_descr|default:"" }}' description='{{ photo.description }}' 
+              pub_date='{{ photo.pub_date }}' when='{{ photo.when|default:"" }}' />
         </div>
     {% endfor %}
 </div>

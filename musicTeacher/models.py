@@ -85,7 +85,8 @@ class Video(models.Model):
 
 
 class Photo(models.Model):
-    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500, blank=True, null=True)
+    short_descr = models.CharField(max_length=40, blank=True, null=True, editable=False)
     photo = models.FileField(upload_to='photos',
                              validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
     photo_thumbnail = ImageSpecField(source='photo',
@@ -94,16 +95,21 @@ class Photo(models.Model):
                                      options={'quality': 70})
     pub_date = models.DateTimeField('date published', editable=False)
     upd_date = models.DateTimeField('date updated', editable=False)
+    when = models.DateTimeField('date of photo', blank=True, null=True)
     is_achievement = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.id:
             self.pub_date = timezone.now()
         self.upd_date = timezone.now()
+        if len(self.description) <= 40:
+           self.short_descr = self.description
+        else: 
+            self.short_descr = self.description[:37] + '...'
         return super(Photo, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return self.short_descr if self.short_descr is not None else self.photo.url
 
 
 class Paper(models.Model):
