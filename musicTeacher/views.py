@@ -1,3 +1,4 @@
+import datetime
 import random
 
 from django.http import HttpResponse
@@ -54,15 +55,70 @@ def paper(request, paper_id):
     return render(request, 'musicTeacher/paper.html', {'paper': paper})
 
 
+MONTH_TO_RU_NAME = {
+    1: "Январь",
+    2: "Февраль",
+    3: "Март",
+    4: "Апрель",
+    5: "Май",
+    6: "Июнь",
+    7: "Июль",
+    8: "Август",
+    9: "Сентябрь",
+    10: "Октябрь",
+    11: "Ноябрь",
+    12: "Декабрь"
+}
+
+"""Returns photo published on specified month and year and links to previous and next month"""
 def photos(request):
-    photos = Photo.objects.order_by('-pub_date')
-    return render(request, 'musicTeacher/photos.html', {'photos': photos})
+    def get_current_year_month():
+        now = datetime.datetime.now()
+        month = now.month
+        return '{}-{:02d}'.format(now.year, now.month)
+
+    def get_previous_month(year, month):
+        month -= 1
+        if month < 1:
+            month = 12
+            year -= 1
+        return year, '{:02d}'.format(month)
+
+    def get_next_month(year, month):
+        month += 1
+        if month > 12:
+            month = 1
+            year += 1
+        return year, '{:02d}'.format(month)
+
+    date = request.GET.get('date', get_current_year_month())
+    splitted = date.split('-')
+    if len(splitted) != 2:
+        return HttpResponse(status=404)
+    try:
+        year, month = int(splitted[0]), int(splitted[1])
+    except ValueError:
+        return HttpResponse(status=404)
+
+    photos = Photo.objects.filter(pub_date__year=year).filter(
+        pub_date__month=month).order_by('-pub_date')
+    render_data = {'photos': photos, 'year': year,
+                   'month': MONTH_TO_RU_NAME[month]}
+
+    render_data['prev_year'], render_data['prev_month'] = get_previous_month(
+        year, month)
+    now = datetime.datetime.now()
+    if (year, month) != (now.year, now.month):
+        render_data['next_year'], render_data['next_month'] = get_next_month(
+            year, month)
+
+    return render(request, 'musicTeacher/photos.html', render_data)
 
 
 def latest_updates(request):
-    papersUpdates = Paper.objects.order_by('-pub_date')[:3]
-    musicUpdates = Music.objects.order_by('-pub_date')[:3]
-    videoUpdates = Video.objects.order_by('-pub_date')[:3]
+    papersUpdates = Paper.objects.order_by('-pub_date')[: 3]
+    musicUpdates = Music.objects.order_by('-pub_date')[: 3]
+    videoUpdates = Video.objects.order_by('-pub_date')[: 3]
     return render(request, 'musicTeacher/latest_updates.html',
                   {'paperUpdates': papersUpdates,
                    'musicUpdates': musicUpdates,

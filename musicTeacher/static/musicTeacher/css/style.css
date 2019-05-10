@@ -23,6 +23,10 @@ body {
     display: none;
 }
 
+.content-container {
+  height:737px;
+}
+
 .grid-container {
     overflow: auto;
     display: grid;
@@ -35,4 +39,12 @@ body {
     display:block;
     color:inherit;
     text-decoration: none;
+}
+
+.photos-date {
+  font-family: 'PF DinText Pro Bold', 'PF DinText Pro', 'Arial Полужирный', sans-serif;
+  font-style: bold;
+  font-size: 1.6em;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
 }

@@ -102,7 +102,7 @@ class Photo(models.Model):
         if not self.id:
             self.pub_date = timezone.now()
         self.upd_date = timezone.now()
-        if len(self.description) <= 40:
+        if self.description is None or len(self.description) <= 40:
            self.short_descr = self.description
         else: 
             self.short_descr = self.description[:37] + '...'

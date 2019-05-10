@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/zoom-vanilla.js/dist/zoom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'musicTeacher/css/style.css' %}" />
 {% endblock %}
 
 {% block navigation %}
@@ -11,5 +12,13 @@
 {% endblock navigation %}
 
 {% block content %}
+<div class="photos-date">
+	<a href="{% url 'photos' %}?date={{ prev_year }}-{{ prev_month }}"> <<< </a>
+	{{month}} {{ year }}
+	{% if next_year %}
+	<a href="{% url 'photos' %}?date={{ next_year }}-{{ next_month }}"> >>> </a>
+	{% endif %}
+	</a>
+</div>
 {% include 'musicTeacher/includes/photo_grid.html' with photos=photos only%}
 {% endblock content %}
