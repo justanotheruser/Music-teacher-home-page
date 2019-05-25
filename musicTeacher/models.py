@@ -86,9 +86,10 @@ class Video(models.Model):
 
 class Photo(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True)
-    short_descr = models.CharField(max_length=40, blank=True, null=True, editable=False)
-    photo = models.FileField(upload_to='photos',
-                             validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
+    short_descr = models.CharField(
+        max_length=40, blank=True, null=True, editable=False)
+    photo = models.ImageField(upload_to='photos',
+                              validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
     photo_thumbnail = ImageSpecField(source='photo',
                                      processors=[ResizeToFill(324, 240)],
                                      format='JPEG',
@@ -103,8 +104,8 @@ class Photo(models.Model):
             self.pub_date = timezone.now()
         self.upd_date = timezone.now()
         if self.description is None or len(self.description) <= 40:
-           self.short_descr = self.description
-        else: 
+            self.short_descr = self.description
+        else:
             self.short_descr = self.description[:37] + '...'
         return super(Photo, self).save(*args, **kwargs)
 
@@ -134,7 +135,8 @@ class Paper(models.Model):
 
 
 class Citation(models.Model):
-    page = models.ForeignKey(MainPageInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    page = models.ForeignKey(
+        MainPageInfo, on_delete=models.SET_NULL, blank=True, null=True)
     quote = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
 
@@ -146,4 +148,3 @@ class Citation(models.Model):
 
     def __str__(self):
         return self.author + ': "' + self.quote[:10] + '...'
-
